@@ -21,8 +21,18 @@ $(function () {
     localStorage.setItem("hour-" + hour, JSON.stringify(userInput));
   });
 
+  $('.time-block').each(function() {
+
   let blockHour = parseInt($(this)).attr("id").split("-")[1];
   let descriptionEl = $(this).find('.description');
+
+  if (blockHour < currentHour) {
+    $(descriptionEl).removeClass('present future').addClass('past');
+  } else if (blockHour == currentHour) {
+    $(descriptionEl).removeClass('past future').addClass('present');
+  } else if (blockHour > currentHour) {
+    $(descriptionEl).removeClass('past present').addClass('future');
+  }
 
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -43,3 +53,5 @@ $(function () {
   //
   // TODO: Add code to display the current date in the header of the page.
 });
+
+
