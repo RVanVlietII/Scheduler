@@ -2,11 +2,25 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 let saveBtn = $('#btn saveBtn col-2 col-md-1');
+let rootEl = $('#root');
 
 $(function () {
 
   var today = dayjs();
   $('#currentDay').text(today.format('MMM D, YYYY'));
+
+  let currentHour = dayjs();
+  $('#currentHour').text(currentHour).hide();
+
+  $('.saveBtn').on('click', function(event) {
+
+    event.preventDefault();
+    let timeBlock = $(this).closest('.time-block').attr('id');
+    let userInput = $(this).closest('.time-block').find('.description').val();
+    let hour = timeBlock.split("-")[1];
+    localStorage.setItem("hour-" + hour, JSON.stringify(userInput));
+  });
+
 
   saveBtn.on('click', handleFormSubmit);
   event.preventDefault();
