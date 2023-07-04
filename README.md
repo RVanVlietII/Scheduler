@@ -9,6 +9,4 @@ Refer to the repo for licensing.
 ## Deployment URL
 
 ## Deployment Img
-
-
-
+<img width="1464" alt="Screenshot 2023-07-04 at 1 46 23 PM" src="https://github.com/RVanVlietII/Scheduler/assets/129308007/c7e1f3a4-733b-4d2d-b688-77db1f043606">
