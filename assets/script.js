@@ -34,6 +34,9 @@ $(function () {
     $(descriptionEl).removeClass('past present').addClass('future');
   }
 
+  let savedInput = localStorage.getItem("hour-" + blockHour);
+  let savedInputEl = JSON.parse(savedInput);
+  $(this).find('.description').val(savedInputEl || "");
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -54,4 +57,4 @@ $(function () {
   // TODO: Add code to display the current date in the header of the page.
 });
 
-
+});
