@@ -1,19 +1,17 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-let saveBtn = $('#btn saveBtn col-2 col-md-1');
-let rootEl = $('#root');
+
 
 $(function () {
 
   var today = dayjs();
   $('#currentDay').text(today.format('MMM D, YYYY'));
 
-  let currentHour = dayjs();
+  let currentHour = dayjs().hour();
   $('#currentHour').text(currentHour).hide();
 
   $('.saveBtn').on('click', function(event) {
-
     event.preventDefault();
     let timeBlock = $(this).closest('.time-block').attr('id');
     let userInput = $(this).closest('.time-block').find('.description').val();
@@ -23,7 +21,7 @@ $(function () {
 
   $('.time-block').each(function() {
 
-  let blockHour = parseInt($(this)).attr("id").split("-")[1];
+  let blockHour = parseInt($(this).attr("id").split("-")[1]);
   let descriptionEl = $(this).find('.description');
 
   if (blockHour < currentHour) {
